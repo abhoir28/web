@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h2>HTML Forms</h2>
+
+    First name:<br>
+    <input id="uname" type="text" name="firstname" value="Mickey">
+    <br>
+    Last name:<br>
+    <input id="lname" type="text" name="lastname" value="Mouse">
+    <br><br>
+    <button onclick="abc()">click me</button>
+    <h1 id="msg"></h1>
+</body>
+
+
+
+<script>
+    function abc() {
+        var uname = document.getElementById('uname').value;
+        var lname = document.getElementById('lname').value;
+        axios.post('http://localhost:9000/user', {
+                uname: uname,
+                lname: lname
+            })
+            .then(function (response) {
+                console.log(response.data.msg);
+                document.getElementById('msg').innerHTML =  response.data.msg;
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+</script>
+
+</html>
