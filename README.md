@@ -1,1 +1,4 @@
-"# web" 
+#Setup
+
+npm install
+
